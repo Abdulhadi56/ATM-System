@@ -6,8 +6,8 @@ The ATM System consists of transactions like ---> Balance Check Withdraw, Deposi
 
 **Code:** 
 
-
 //ATM System --- PITP 2 --- CORE JAVA TASK --- 2-October-2025 --- Thursday
+
 import java.util.Scanner;
 
 public class Main {
