@@ -1,84 +1,39 @@
-# ATM-System
-My first Core Java project code of an ATM System
+ATM System in Java --- PITP 2 --- Project --- 2/Octobe/2025 --- Thursday
 
-ATM Machine System Project in Core Java --- PITP 2 --- 2/October/2025 --- Thursday
-The ATM System consists of transactions like ---> Balance Check Withdraw, Deposit, Receipt, Exiting
+Introduction
 
-**Code:** 
+An ATM (Automated Teller Machine) System is a self-service machine that allows customers to perform financial transactions without the need for a human teller. This system is typically used for activities such as withdrawing money, checking account balance, and transferring funds between accounts. The ATM system described here is a basic console-based implementation in Java, designed to simulate the main operations of an ATM.
 
-//ATM System --- PITP 2 --- CORE JAVA TASK --- 2-October-2025 --- Thursday
+Features
 
-import java.util.Scanner;
+User authentication (PIN entry)
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner obj = new Scanner(System.in);
+Balance inquiry
 
-        int balance = 10000;
-        int pinNum = 123;
+Withdraw cash
 
-        System.out.println("--- Welcome to ATM System ---");
-        System.out.print("Enter Your PIN Number: ");
-        int userPin = obj.nextInt();
+Deposit funds
 
-        if (userPin != pinNum) {
-            System.out.println("Invalid Pin, Please try again");
-            return;
-        }
+Transfer funds
 
-        while (true) {
-            System.out.print("Would you like any Transaction [Yes/No]: ");
-            String userChoice = obj.next();
+Account details
 
-            if (userChoice.equalsIgnoreCase("Yes")) {
-                System.out.println("\nSelect the Transaction from the following:");
-                System.out.println("1. Balance");
-                System.out.println("2. Deposit");
-                System.out.println("3. Withdraw");
-                System.out.println("4. Receipt");
-                System.out.println("5. Exit\n");
+Classes and Structure
+1. ATMSystem.java
 
-                System.out.print("Enter Your Transaction Type: ");
-                String userTransactionType = obj.next();
+This is the main class that acts as the entry point of the system, allowing the user to interact with the ATM. The main operations like authentication and interaction with other components (e.g., Account, Transaction) are handled here.
 
-                if (userTransactionType.equalsIgnoreCase("Balance")) {
-                    System.out.println("Current Balance: " + balance);
-                } else if (userTransactionType.equalsIgnoreCase("WithDraw")) {
-                    System.out.print("Enter amount you want to withdraw: ");
-                    int withdrawAmount = obj.nextInt();
-                    if (withdrawAmount > balance) {
-                        System.out.println("Insufficient Balance!");
-                    } else {
-                        balance -= withdrawAmount;
-                        System.out.println("Withdrawn: " + withdrawAmount);
-                        System.out.println("Current Balance: " + balance);
-                    }
-                } else if (userTransactionType.equalsIgnoreCase("Deposit")) {
-                    System.out.print("Enter amount you want to deposit: ");
-                    int depositAmount = obj.nextInt();
-                    balance += depositAmount;
-                    System.out.println("Deposited: " + depositAmount);
-                    System.out.println("Current Balance: " + balance);
-                } else if (userTransactionType.equalsIgnoreCase("Receipt")) {
-                    System.out.println("Printing receipt...");
-                    System.out.println("Balance: " + balance);
-                    System.out.println("Thank you for using our ATM.");
-                } else if (userTransactionType.equalsIgnoreCase("Exit")) {
-                    System.out.println("Exiting...");
-                    break;
-                } else {
-                    System.out.println("Invalid transaction type. Please try again.");
-                }
+2. Account.java
 
-            } else if (userChoice.equalsIgnoreCase("No")) {
-                System.out.println("Thank You for using our ATM.");
-                break;
-            } else {
-                System.out.println("Invalid Input, please type Yes or No");
-            }
-        }
-    }
-}
+The Account class holds the details of the user’s account, including the account number, PIN, balance, and transaction history. Methods in this class manage balance checking, depositing funds, withdrawing funds, etc.
+
+3. Transaction.java
+
+This class manages the transaction history of an account, such as deposits, withdrawals, and transfers. It allows recording of the transaction type, amount, and timestamp.
+
+4. ATMTransaction.java
+
+Handles individual ATM operations, such as withdrawal and deposit processing, including checks for sufficient balance, PIN validation, etc.
 
 
 
